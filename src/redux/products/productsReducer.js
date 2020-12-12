@@ -8,7 +8,8 @@ const initialState = {
     show: false,
     category: false
   },
-  findingData: ''
+  findingData: '',
+  numberOfElem: 20,
 }
 
 export default function reducer(state = initialState, action) {
@@ -53,6 +54,13 @@ export default function reducer(state = initialState, action) {
           show: false,
           category: action.payload
         }
+      }
+    
+    case types.MORE_ELEMS:
+      //let num = state.numberOfElem + 20;
+      return{
+        ...state, 
+        numberOfElem: action.payload
       }
     
 	  default: 

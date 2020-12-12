@@ -2,9 +2,7 @@ import * as types from './wantedsActionsTypes'
 
 const initialState = {
     error: false,
-    wantedList: {
-        data: []
-    }
+    wanted: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -12,15 +10,13 @@ export default function reducer(state = initialState, action) {
         case types.ADD_TO_WANTED_LIST: {
             return {
                 ...state,
-                 wantedList: {
-                     data: action.payload
-                 }
+                 wanted: [...state.wanted, action.payload]
             }
         }
-        case types.DEL_FROM_WANTED_LIST: {
-            const itemIndex = state.wantedList.findIndex((item) => action.payload.id === item.id)
+        case types.DELETE_FROM_WANTED_LIST: {
+            const newArr = state.wanted.filter(item => item.id !== action.payload)
             return {
-                ...state, wantedList: [...state.wantedList.slice(0, itemIndex), ...state.wantedList.slice(itemIndex + 1)]
+                ...state, wanted: newArr
             }
         }
         default:

@@ -1,6 +1,7 @@
 import * as types from './wantedsActionsTypes'
+
 export function delFromWantedList(payload) {
-    return {type: types.DEL_FROM_WANTED_LIST, payload}
+    return {type: types.DELETE_FROM_WANTED_LIST, payload}
 }
 
 export function addToWantedList(payload) {

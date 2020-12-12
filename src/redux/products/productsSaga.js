@@ -5,6 +5,7 @@ import {getAllProduct} from '../../libs/products'
 
 export function* getAllBooksSaga() {
     const data = yield call(getAllProduct)
+   
     yield put(getAllProductsSuccessAction(data))
 }
 
