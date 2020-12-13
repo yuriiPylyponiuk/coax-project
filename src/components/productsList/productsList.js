@@ -4,7 +4,7 @@ import './productList.css'
 import {addToWantedList} from '../../redux/wanted/wantedsActions'
 import {addToCard} from '../../redux/card/card.Action'
 import {getAllProductsRequestAction, getMoreElems} from '../../redux/products/productsActions';
-
+import { Link, useParams } from "react-router-dom";
 
 class ProductsList extends React.Component {
 	constructor(props){
@@ -31,14 +31,18 @@ class ProductsList extends React.Component {
 				this.props.products.data.map(item => {
 					return(
 						<div key={item.id} className="productIttem">
-							<img src={item.volumeInfo.imageLinks.thumbnail} alt=""/>
-							<div className="product-item-info-block">
-								<h3>{item.volumeInfo.title}</h3>
-								<h2>{item.volumeInfo.authors[0]}</h2>
-								<p><span>{item.saleInfo.listPrice.amount}</span>  <span>{item.saleInfo.listPrice.currencyCode}</span></p>
-								<button onClick= { (e) => this.handleList(e, item)}>Add to wanted</button>
-								<button onClick= { () => this.props.addToCard(item)}>Add to card</button>
-							</div> 
+							<Link  to={{ pathname: `/product/${item.id}`}} params={{id: item.id}} className='linkToCountry'>
+								<img src={item.volumeInfo.imageLinks.thumbnail} alt=""/>
+								<div className="product-item-info-block">
+									<div className="product-info">
+										<h3>{item.volumeInfo.title}</h3>
+										<h2>{item.volumeInfo.authors[0]}</h2>
+									</div>
+									<p><span>{item.saleInfo.listPrice.amount}</span>  <span>{item.saleInfo.listPrice.currencyCode}</span></p>
+									<button onClick= { (e) => this.handleList(e, item)}>Add to wanted</button>
+									<button onClick= { () => this.props.addToCard(item)}>Add to card</button>
+								</div> 
+							</Link>
 						</div>
 					)
 				})

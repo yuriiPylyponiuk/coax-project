@@ -1,8 +1,8 @@
 import * as types from './wantedsActionsTypes'
 
 const initialState = {
+    wanted: [],
     error: false,
-    wanted: []
 }
 
 export default function reducer(state = initialState, action) {

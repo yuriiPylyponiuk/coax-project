@@ -5,6 +5,7 @@ import WontedPage from "../../pages/wontedPage/wontedPage";
 import CategoryPage from "../../pages/categoryPage/categoryPage";
 import CardPage from "../../pages/cartPage/cardPage";
 import Header from "../header/header";
+import ProductPage from '../../pages/productPage/productPage'
 
 const RouterPages = () => {
     return (
@@ -16,6 +17,7 @@ const RouterPages = () => {
                     <Route exact path="/category/" component={CategoryPage}/>
                     <Route exact path='/card-page/' component={CardPage}/>
                     <Route exact path='/' component={MainPage}/>
+                    <Route path='/product/:id' component={ProductPage}/>
                 </Switch>
             </div>
         </Router>
