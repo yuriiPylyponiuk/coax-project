@@ -55,9 +55,28 @@ export default function reducer(state = initialState, action) {
           category: action.payload
         }
       }
+    case types.FILTER_PRODUCTS:
+      return{
+        ...state,
+        products: {
+          data: action.payload,
+          loaded: false,
+          error: false,
+          show: true,
+        }
+      }
+    case types.SEARCH_IN_LIST:
+      return{
+        ...state,
+        products: {
+          data: action.payload,
+          loaded: false,
+          error: false,
+          show: true,
+        }
+      }
     
     case types.MORE_ELEMS:
-      //let num = state.numberOfElem + 20;
       return{
         ...state, 
         numberOfElem: action.payload

@@ -10,6 +10,25 @@
   align-items: center;
   flex-flow: column;
   margin: 50px 0;
-  width: 35%;
+  width: 28%;
   text-align: center;
+  max-height: 400px;
+}
+.product-item-info-block{
+  width: 70%;
+}
+.product-list-fiter-tools{
+  display: flex;
+  justify-content: space-around;
+}
+.product-list-fiter-tools {
+  margin-top: 15px;
+}
+.product-list-fiter-tools * {
+  font-size: 18px;
+}
+body *{
+  color: #000000;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
 }

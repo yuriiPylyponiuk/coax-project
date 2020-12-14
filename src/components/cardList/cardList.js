@@ -3,7 +3,8 @@ import {connect} from "react-redux"
 import {deleteItemFromCard, addToCard, showCardElems, buyAll, deleteAllItemsFromList} from "../../redux/card/card.Action";
 import './cardList.css';
 import _ from 'lodash';
-import './cardList.css'
+import './cardList.css';
+import { Link, useParams } from "react-router-dom";
 
 class CardList extends React.Component{
 	constructor(props){
@@ -46,7 +47,9 @@ class CardList extends React.Component{
 					<div key={item.id} className="card-item">
 						<img src={item.volumeInfo.imageLinks.thumbnail} alt=""/>
 						<div className="product-item-info-block">
+						<Link  to={{ pathname: `/product/${item.id}`}} params={{id: item.id}} className='linkToCountry'>
 							<h4>{item.volumeInfo.title}</h4>
+						</Link>
 							<div className="count">
 								<button onClick={()=> this.props.addToCard(item)} >+</button>
 								<p>{this.countNumber(card, item.id)}</p>
@@ -57,7 +60,7 @@ class CardList extends React.Component{
 						<div className="item-total-count">
 							<p><span className='item-total-count-num'>{ this.makeTotalItemPrice(card, item.id, item)}</span> <span>{item.saleInfo.listPrice.currencyCode}</span></p>
 						</div>
-						<button onClick={() =>this.props.deleteAllItemsFromList(item.id)}>Delete Item</button>
+						<button className='delete-btn-card' onClick={() =>this.props.deleteAllItemsFromList(item.id)}>Delete Item</button>
 					</div>
 				)
 			})

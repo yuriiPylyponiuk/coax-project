@@ -9,6 +9,7 @@
 .card-item {
   margin: 20px 10px;
   height: 150px;
+  position: relative;
   display: flex;
 }
 .card-list .product-item-info-block{
@@ -35,10 +36,27 @@
   display: flex;
   border: 1px solid black;
   height: 20px;
+  max-width: 110px;
 }
 .count a{
   text-decoration: none;
 }
 .count p{
   margin: 0 20px;
+}
+.delete-btn-card{
+  position: absolute;
+  right: 0;
+}
+
+
+
+@media screen and (max-width: 670px){
+  .card-list .product-item-info-block{
+    display: block;
+    width: calc( 100% - 150px);
+  }
+  .card-list .product-item-info-block > *{
+    width: fit-content
+  }
 }
