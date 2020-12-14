@@ -9,7 +9,7 @@ const initialState = {
     category: false
   },
   findingData: '',
-  numberOfElem: 20,
+  numberOfElem: 12,
 }
 
 export default function reducer(state = initialState, action) {

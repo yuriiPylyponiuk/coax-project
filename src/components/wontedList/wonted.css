@@ -1,3 +1,15 @@
 .wanted-block{
-  
+  width: 90%;
+  margin: auto;
+}
+
+.wanted-item{
+  display: flex;
+  margin: 40px 0;
+}
+.wanted-item img{
+  margin-right: 10%;
+}
+.wanted-item button{
+  margin-left: 0;
 }

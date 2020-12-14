@@ -3,6 +3,10 @@
     border-bottom: 1px solid;
     height: 3rem;
     align-items: center;
+    justify-content: space-between;
+}
+.menu .btn{
+    margin: 0 40px;
 }
 .btn{
     padding: 5px 7px;

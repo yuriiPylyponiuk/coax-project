@@ -14,6 +14,7 @@ class ProductsList extends React.Component {
 		this.handleList = this.handleList.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 		this.searchSmth = this.searchSmth.bind(this)
+		this.loadMore = this.loadMore.bind(this)
 	}
 
 	handleList(e, item){
@@ -31,23 +32,25 @@ class ProductsList extends React.Component {
 	showList(){
 		if(this.props.products.show ){
 			return(
-				this.props.products.data.map(item => {
-					return(
-						<div key={item.id} className="productIttem">
-							<img src={item.volumeInfo.imageLinks.thumbnail} alt=""/>
-							<div className="product-item-info-block">
-								<div className="product-info">
-								<Link  to={{ pathname: `/product/${item.id}`}} params={{id: item.id}} className='linkToCountry'>
-									<h2>{item.volumeInfo.title}</h2>
-									<h3>{item.volumeInfo.authors[0]}</h3>
-								</Link>
-								</div>
-								<p><span>{item.saleInfo.listPrice.amount}</span>  <span>{item.saleInfo.listPrice.currencyCode}</span></p>
-								<button onClick= { (e) => this.handleList(e, item)}>Add to wanted</button>
-								<button onClick= { () => this.props.addToCard(item)}>Add to card</button>
-							</div> 
-						</div>
-					)
+				this.props.products.data.map((item, index) => {
+					if( index < this.props.numberOfElem){
+						return(
+							<div key={item.id} className="productIttem">
+								<img src={item.volumeInfo.imageLinks.thumbnail} alt=""/>
+								<div className="product-item-info-block">
+									<div className="product-info">
+									<Link  to={{ pathname: `/product/${item.id}`}} params={{id: item.id}} className='linkToCountry'>
+										<h2>{item.volumeInfo.title}</h2>
+										<h3>{item.volumeInfo.authors[0]}</h3>
+									</Link>
+									</div>
+									<p><span>{item.saleInfo.listPrice.amount}</span>  <span>{item.saleInfo.listPrice.currencyCode}</span></p>
+									<button onClick= { (e) => this.handleList(e, item)}>Add to wanted</button>
+									<button onClick= { () => this.props.addToCard(item)}>Add to card</button>
+								</div> 
+							</div>
+						)
+					}
 				})
 			)
 		}
@@ -96,7 +99,6 @@ class ProductsList extends React.Component {
 		let str = e.target[0].value;
 		let newArr =  this.props.products.data.filter( item => {
 			if(item.volumeInfo.title.indexOf(str)>0){
-				//console.log(item.volumeInfo.title.indexOf(str))
 				return item
 			}
 		})
@@ -108,9 +110,15 @@ class ProductsList extends React.Component {
 		}
 	}
 
+	loadMore(){
+		let number = this.props.numberOfElem;
+		number += 12;
+		this.props.getMoreElems(number);
+	}
+
 	render() {
 		return (		
-			<div className="product-container">
+			<div className="product-container" >
 				<div className="product-list-fiter-tools">
 					<label>
 						Chose your filter
@@ -128,9 +136,9 @@ class ProductsList extends React.Component {
 				</div>
 				<div className='productList'>
 					{this.showList()}
-					<div className="btn">
-						<button onClick={() => this.props.getMoreElems(this.props.numberOfElem + 20)}>Load More</button>
-					</div>
+				</div>
+				<div className="product-container-btn">
+					<button onClick={() => this.loadMore()}>Load More</button>
 				</div>
 			</div>
 		);

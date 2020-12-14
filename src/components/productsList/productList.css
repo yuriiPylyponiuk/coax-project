@@ -4,15 +4,18 @@
   align-items: center;
   flex-flow: row wrap;
 }
-.productIttem{
+.productIttem {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: column;
   margin: 50px 0;
-  width: 28%;
+  width: 24%;
   text-align: center;
-  max-height: 400px;
+  height: 450px;
+  padding: 20px;
+  border: 2px solid #777777;
+  border-radius: 15px;
 }
 .product-item-info-block{
   width: 70%;
@@ -20,6 +23,7 @@
 .product-list-fiter-tools{
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .product-list-fiter-tools {
   margin-top: 15px;
@@ -31,4 +35,51 @@ body *{
   color: #000000;
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
+}
+.product-container-btn{
+  padding: 5px 7px;
+  color: #000;
+  text-decoration: none;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.productList button{
+  padding: 2px 5px;
+  margin: 0 5px;
+}
+button{
+  padding: 7px 17px;
+  margin: 0 20px;
+  border-radius: 40px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: .5s;
+  border-color: #777777;
+}
+button:hover{
+  color: #ffffff;
+  background: #777777;
+}
+@media screen and (max-width: 1025px){
+  .productIttem{
+    width: 35%;
+  }
+}
+@media screen and (max-width: 700px){
+  .productIttem{
+    width: 85%;
+  }
+  .product-list-fiter-tools{
+    display: block;
+  }
+  .product-list-fiter-tools > *{
+    margin: 20px 0;
+  }
+}
+@media screen and (max-width: 700px){
+  .product-list-fiter-tools input{
+    width: 150px;
+  }
 }

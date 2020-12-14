@@ -60,7 +60,7 @@ class CardList extends React.Component{
 						<div className="item-total-count">
 							<p><span className='item-total-count-num'>{ this.makeTotalItemPrice(card, item.id, item)}</span> <span>{item.saleInfo.listPrice.currencyCode}</span></p>
 						</div>
-						<button className='delete-btn-card' onClick={() =>this.props.deleteAllItemsFromList(item.id)}>Delete Item</button>
+						<button className='delete-btn-card' onClick={() =>this.props.deleteAllItemsFromList(item.id)}>X</button>
 					</div>
 				)
 			})

@@ -1,6 +1,7 @@
 .card-list{
   display: flex;
   flex-flow: column;
+  margin: 0 40px;
 }
 .card-list img {
   height: 100%;
@@ -11,12 +12,17 @@
   height: 150px;
   position: relative;
   display: flex;
+  border: 2px solid #777;
+  padding: 20px 10px;
 }
 .card-list .product-item-info-block{
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: calc( 100% - 250px);
+}
+.card-list button{
+  margin-left: 0;
 }
 .card-list .product-item-info-block > *{
   width: 25%;
@@ -46,7 +52,30 @@
 }
 .delete-btn-card{
   position: absolute;
-  right: 0;
+  right: -10px;
+  top: -10px;
+  background-color: red;
+  color: #fff;
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 5px;
+  border: none;
+  border-radius: 30px;
+}
+.card-list .count button {
+  padding: 0;
+  margin: 0;
+  border-radius: 40px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: .5s;
+  border: none;
+  font-size: 20px;
+}
+.card-list-total-price-text{
+  font-size: 25px;
 }
 
 
@@ -58,5 +87,15 @@
   }
   .card-list .product-item-info-block > *{
     width: fit-content
+  }
+  body .menu .btn{
+    margin: 0;
+  }
+  body .card-list{
+    margin: 0;
+  }
+  body .card-item{
+    margin: 20px 0;
+    height: auto;
   }
 }
