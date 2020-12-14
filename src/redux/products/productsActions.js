@@ -13,6 +13,9 @@ export function getMoreElems(payload){
 export function getCategory(payload){
     return {type: types.GET_CATEGORY, payload}
 }
+export function getCategorySuc(payload){
+    return {type: types.GET_CATEGORY_SUC, payload}
+}
 
 export function fiterProductList(payload){
     return {type: types.FILTER_PRODUCTS, payload}

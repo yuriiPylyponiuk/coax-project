@@ -51,9 +51,9 @@ class CardList extends React.Component{
 							<h4>{item.volumeInfo.title}</h4>
 						</Link>
 							<div className="count">
-								<button onClick={()=> this.props.addToCard(item)} >+</button>
-								<p>{this.countNumber(card, item.id)}</p>
 								<button  onClick={()=> this.props.deleteItemFromCard(item)} >-</button>
+								<p>{this.countNumber(card, item.id)}</p>
+								<button onClick={()=> this.props.addToCard(item)} >+</button>
 							</div>
 							<p><span>{item.saleInfo.listPrice.amount}</span>  <span>{item.saleInfo.listPrice.currencyCode}</span></p>
 						</div> 
@@ -72,20 +72,14 @@ class CardList extends React.Component{
 	}
 
 	makeTotalPrice(){
+		let count = 0;
 		if(this.props.card.buy){
 			return 0
 		}
 
-		let arr = document.querySelectorAll('.item-total-count p .item-total-count-num');
-		if (this.props.card.show && arr.length > 0) {
-			let count = 0;
-			for(let i =  0; i < arr.length; i++){
-				let num = +arr[i].textContent;
-				count += num
-			}
-			count = count.toFixed(2);
-			return `${count} UAH`
-		}
+		this.props.card.cardList.map( item => count += +item.saleInfo.listPrice.amount);
+		count = count.toFixed(2);
+		return `${count} UAH`
 	}
 
 	buyProduct(){

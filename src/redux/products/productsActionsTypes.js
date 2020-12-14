@@ -7,3 +7,4 @@ export const GET_CATEGORY = 'GET_CATEGORY';
 export const MORE_ELEMS = 'MORE_ELEMS';
 export const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
 export const SEARCH_IN_LIST = 'SEARCH_IN_LIST';
+export const GET_CATEGORY_SUC = 'GET_CATEGORY_SUC';

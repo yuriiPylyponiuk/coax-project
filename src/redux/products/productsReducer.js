@@ -48,11 +48,20 @@ export default function reducer(state = initialState, action) {
       return{
         ...state,
         products: {
-          data: state.products.data,
+          data: false,
           loaded: false,
           error: false,
-          show: false,
-          category: action.payload
+          show: false
+        }
+      }
+    case types.GET_CATEGORY_SUC:
+      return{
+        ...state,
+        products: {
+          data: action.payload,
+          loaded: false,
+          error: false,
+          show: true
         }
       }
     case types.FILTER_PRODUCTS:

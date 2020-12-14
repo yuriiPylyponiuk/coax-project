@@ -98,7 +98,7 @@ class ProductsList extends React.Component {
 		e.preventDefault();
 		let str = e.target[0].value;
 		let newArr =  this.props.products.data.filter( item => {
-			if(item.volumeInfo.title.indexOf(str)>0){
+			if(item.volumeInfo.title.indexOf(str)>=0){
 				return item
 			}
 		})
