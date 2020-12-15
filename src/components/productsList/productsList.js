@@ -14,7 +14,8 @@ class ProductsList extends React.Component {
 		this.handleList = this.handleList.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 		this.searchSmth = this.searchSmth.bind(this)
-		this.loadMore = this.loadMore.bind(this)
+		// this.loadMore = this.loadMore.bind(this)
+		this.handleScroll = this.handleScroll.bind(this)
 	}
 
 	handleList(e, item){
@@ -26,7 +27,20 @@ class ProductsList extends React.Component {
 		}
 	}
 	componentDidMount(){
-			this.props.getAllProductsRequestAction()
+		window.addEventListener('scroll', this.handleScroll, true);
+		this.props.getAllProductsRequestAction();
+	}
+	componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+	}
+	handleScroll(){
+		let html = document.querySelector('html');
+
+		if (html.scrollTop + html.clientHeight >= html.scrollHeight) {
+			let number = this.props.numberOfElem;
+			number += 12;
+			this.props.getMoreElems(number);
+		}
 	}
 
 	showList(){
@@ -34,13 +48,15 @@ class ProductsList extends React.Component {
 			return(
 				this.props.products.data.map((item, index) => {
 					if( index < this.props.numberOfElem){
+						let strName= item.volumeInfo.title;
+						strName = strName.slice(0, 15);
 						return(
 							<div key={item.id} className="productIttem">
 								<img src={item.volumeInfo.imageLinks.thumbnail} alt=""/>
 								<div className="product-item-info-block">
 									<div className="product-info">
 									<Link  to={{ pathname: `/product/${item.id}`}} params={{id: item.id}} className='linkToCountry'>
-										<h2>{item.volumeInfo.title}</h2>
+										<h2>{strName}</h2>
 										<h3>{item.volumeInfo.authors[0]}</h3>
 									</Link>
 									</div>
@@ -110,11 +126,11 @@ class ProductsList extends React.Component {
 		}
 	}
 
-	loadMore(){
-		let number = this.props.numberOfElem;
-		number += 12;
-		this.props.getMoreElems(number);
-	}
+	// loadMore(){
+	// 	let number = this.props.numberOfElem;
+	// 	number += 12;
+	// 	this.props.getMoreElems(number);
+	// }
 
 	render() {
 		return (		
@@ -138,7 +154,7 @@ class ProductsList extends React.Component {
 					{this.showList()}
 				</div>
 				<div className="product-container-btn">
-					<button onClick={() => this.loadMore()}>Load More</button>
+					{/* <button onClick={() => this.loadMore()}>Load More</button> */}
 				</div>
 			</div>
 		);
